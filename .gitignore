@@ -1,3 +1,4 @@
 datascience_in_fastapi/
 __pycache__/
 .env
+requirements.txt
