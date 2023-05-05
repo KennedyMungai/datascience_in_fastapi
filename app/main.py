@@ -1,10 +1,29 @@
 """The entrypoint to the application"""
 from fastapi import FastAPI, Depends
 from models.newsgroup_models import NewsgroupsModel, PredictionOutput
+import joblib
+from sklearn.pipeline import Pipeline
 
 
 app = FastAPI()
 newsgroups_model = NewsgroupsModel()
+
+memory = joblib.Memory(location="cache.joblib")
+
+
+@memory.cache(ignore=["model"])
+def predict(model: Pipeline, text: str) -> int:
+    """This method caches the trained model
+
+    Args:
+        model (Pipeline): The model of the data
+        text (str): The text search?
+
+    Returns:
+        int: Prediction accuracy
+    """
+    prediction = model.predict([text])
+    return prediction[0]
 
 
 @app.get("/", name="Home", description="The root endpoint of the application", tags=["Home"])
