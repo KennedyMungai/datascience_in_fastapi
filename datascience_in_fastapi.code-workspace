@@ -12,8 +12,11 @@
 		"cSpell.words": [
 			"arange",
 			"Boyes",
+			"Multinomial",
 			"Orsay",
-			"sklearn"
+			"sklearn",
+			"Tfidf",
+			"Vectorizer"
 		]
 	}
 }
