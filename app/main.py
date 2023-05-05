@@ -1,7 +1,6 @@
 """The entrypoint to the application"""
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from models.newsgroup_models import NewsgroupsModel, PredictionOutput
-from fastapi import Depends
 
 
 app = FastAPI()
