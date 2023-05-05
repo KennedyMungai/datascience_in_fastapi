@@ -11,6 +11,7 @@
 		"python.formatting.provider": "none",
 		"cSpell.words": [
 			"arange",
+			"Boyes",
 			"Orsay",
 			"sklearn"
 		]
