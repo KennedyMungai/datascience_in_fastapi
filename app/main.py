@@ -36,3 +36,14 @@ async def prediction(
         PredictionOutput: The output of the prediction
     """
     return output
+
+
+@app.on_event("startup")
+async def startup():
+    """The startup event
+
+    Returns:
+        None: None
+
+    """
+    newsgroups_model.load_model()
