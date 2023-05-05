@@ -39,7 +39,6 @@ class NewsgroupsModel:
         model, targets = loaded_model
         self.model = model
         self.targets = targets
-        
 
     def predict(self, _input: PredictionInput) -> PredictionOutput:
         """Runs the prediction
@@ -53,7 +52,7 @@ class NewsgroupsModel:
         if not self.model or not self.targets:
             raise RuntimeError("Model is not loaded")
 
-        prediction = self.model.predict([_input.text])
-        category = self.targets[prediction[0]]
+        prediction = predict(self.model, input.text)
+        category = self.targets[prediction]
 
         return PredictionOutput(category=category)
