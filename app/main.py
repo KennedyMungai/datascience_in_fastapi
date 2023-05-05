@@ -1,5 +1,5 @@
 """The entrypoint to the application"""
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, status
 from models.newsgroup_models import NewsgroupsModel, PredictionOutput
 import joblib
 from sklearn.pipeline import Pipeline
@@ -54,6 +54,12 @@ async def prediction(
         PredictionOutput: The output of the prediction
     """
     return output
+
+
+@app.delete("/cache", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_cache():
+    memory.clear()
+    return None
 
 
 @app.on_event("startup")
