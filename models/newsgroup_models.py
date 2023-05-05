@@ -39,20 +39,21 @@ class NewsgroupsModel:
         model, targets = loaded_model
         self.model = model
         self.targets = targets
+        
 
-        async def predict(self, _input: PredictionInput) -> PredictionOutput:
-            """Runs the prediction
+    async def predict(self, _input: PredictionInput) -> PredictionOutput:
+        """Runs the prediction
 
-            Args:
-                input (PredictionInput): The input data
+        Args:
+            input (PredictionInput): The input data
 
-            Returns:
-                PredictionOutput: The output data
-            """
-            if not self.model or not self.targets:
-                raise RuntimeError("Model is not loaded")
+        Returns:
+            PredictionOutput: The output data
+        """
+        if not self.model or not self.targets:
+            raise RuntimeError("Model is not loaded")
 
-            prediction = self.model.predict([_input.text])
-            category = self.targets[prediction[0]]
+        prediction = self.model.predict([_input.text])
+        category = self.targets[prediction[0]]
 
-            return PredictionOutput(category=category)
+        return PredictionOutput(category=category)
