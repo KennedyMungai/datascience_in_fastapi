@@ -58,6 +58,11 @@ async def prediction(
 
 @app.delete("/cache", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_cache():
+    """The endpoint for clearing the cache
+
+    Returns:
+        None: Returns nothing
+    """
     memory.clear()
     return None
 
