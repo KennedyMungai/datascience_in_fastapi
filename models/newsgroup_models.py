@@ -41,7 +41,7 @@ class NewsgroupsModel:
         self.targets = targets
         
 
-    async def predict(self, _input: PredictionInput) -> PredictionOutput:
+    def predict(self, _input: PredictionInput) -> PredictionOutput:
         """Runs the prediction
 
         Args:
